@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--    标签的顺序,从上到下 : (properties ==> settings ==> typeAliases ==>
+                typeHandlers ==> objectFactory ==> objectWrapperFactory ==>
+                reflectorFactory ==> plugins ==> environments ==>
+                databaseIdProvider ==> mappers)
+    -->
+
+    <settings>
+
+        <setting name="logPrefix" value="dao." />
+        <!--    开启驼峰命名映射    -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--    mybatis默认把null字段使用jdbc.Other,Oracle无法识别,可以通过这个全局设置修改,也可以#{email, jdbcType=NULL}    -->
+        <setting name="jdbcTypeForNull" value="NULL"/>
+        <!--    显式指定我们要更改的配置的值,即使它是默认的,避免版本升级导致设置不一致    -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+</configuration>

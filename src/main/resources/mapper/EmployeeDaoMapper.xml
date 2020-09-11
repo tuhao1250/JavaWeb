@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xml与接口绑定需要指定namespace为接口的全类名-->
+<mapper namespace="com.th.dao.EmployeeDao">
+
+    <resultMap id="myEmp" type="com.th.bean.Employee">
+        <!--
+        指定主键列的封装规则(虽然主键也可以使用result标签来定义,但是使用id标签,mybatis可以知道这一列是主键,内部有优化)
+        column:查询的数据的哪一列
+        property:指定对应的javaBean属性
+        -->
+        <id column="id" property="id"/>
+        <!--    非主键列可以使用result标签来定义    -->
+        <result column="last_name" property="lastName"/>
+        <!--    其他不指定的列会自动封装,我们只要写resultMap就把全部的映射规则都写上    -->
+        <result column="email" property="email" />
+        <result column="gender" property="gender"/>
+    </resultMap>
+    <select id="getEmployeeById" resultMap="myEmp">
+        select  * from tb_employee where id = #{id}
+    </select>
+</mapper>
